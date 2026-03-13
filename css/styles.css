@@ -526,6 +526,9 @@ ul {
 
 .footer__social a:hover {
     /* TODO: Social link hover */
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+
 }
 
 /* ============================================================
@@ -738,3 +741,315 @@ ul {
    ADDITIONAL STYLES
    TODO: Add any additional styles you need
    ============================================================ */
+   
+/* ============================================================
+   PRINT STYLESHEET
+   Optimize layout for printing
+   ============================================================ */
+
+@media print {
+    /* Hide unnecessary elements */
+    .header,
+    .theme-toggle,
+    .hamburger-toggle,
+    .hamburger-checkbox,
+    .btn,
+    .footer {
+        display: none;
+    }
+
+    /* Body adjustments */
+    body {
+        background-color: white;
+        color: black;
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+
+    /* Section spacing */
+    .hero,
+    .about,
+    .projects,
+    .contact {
+        page-break-inside: avoid;
+        margin-bottom: 1cm;
+        padding: 0;
+    }
+
+    /* Avoid breaking content */
+    .about__content,
+    .project-card,
+    .form-group {
+        page-break-inside: avoid;
+    }
+
+    /* Headings */
+    h1, h2, h3 {
+        page-break-after: avoid;
+        color: #000;
+        font-weight: bold;
+    }
+
+    h1 {
+        font-size: 20pt;
+        margin-bottom: 0.5cm;
+    }
+
+    h2 {
+        font-size: 16pt;
+        margin-top: 0.5cm;
+        margin-bottom: 0.25cm;
+    }
+
+    h3 {
+        font-size: 13pt;
+    }
+
+    /* Skills section */
+    .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5cm;
+        margin: 0.5cm 0;
+    }
+
+    .skills-list li {
+        background-color: transparent;
+        color: #000;
+        border: 1px solid #000;
+        padding: 4pt 8pt;
+        border-radius: 0;
+        font-size: 10pt;
+        page-break-inside: avoid;
+    }
+
+    /* Links - show URLs */
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 80%;
+    }
+
+    /* Images */
+    img {
+        max-width: 100%;
+        page-break-inside: avoid;
+    }
+
+    /* Project cards */
+    .project-card {
+        border: 1px solid #ccc;
+        padding: 10pt;
+        margin-bottom: 0.5cm;
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+
+    /* Remove shadows and backgrounds */
+    .project-card,
+    .btn {
+        box-shadow: none;
+        background-color: transparent;
+    }
+
+    /* Lists */
+    ul, ol {
+        margin-left: 20pt;
+    }
+
+    /* Reduce spacing */
+    .container {
+        padding: 0;
+    }
+
+    /* Hero section minimal */
+    .hero {
+        min-height: auto;
+        background-color: white;
+    }
+
+    /* Print-friendly grid */
+    .projects__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10pt;
+    }
+
+    /* Contact form - don't print */
+    .contact__form {
+        display: none;
+    }
+
+    /* Better text formatting */
+    p {
+        orphans: 3;
+        widows: 3;
+    }
+}
+
+/* ============================================================
+   CSS ANIMATIONS & TRANSITIONS
+   Smooth animations for better user experience
+   ============================================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes scaleHover {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}
+
+/* Apply animations to elements */
+.hero {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.about,
+.projects,
+.contact {
+    animation: slideUp 0.6s ease-out;
+}
+
+.about h2,
+.projects h2,
+.contact h2 {
+    animation: slideInLeft 0.5s ease-out;
+}
+
+.project-card {
+    animation: slideUp 0.6s ease-out;
+    transition: all var(--transition-normal);
+}
+
+.project-card:hover {
+    animation: scaleHover 0.3s ease-in-out forwards;
+}
+
+.skills-list li {
+    animation: pulse 3s ease-in-out infinite;
+    transition: all var(--transition-normal);
+}
+
+.skills-list li:hover {
+    background-color: var(--color-primary-dark);
+    transform: scale(1.1);
+}
+
+/* Button animations */
+.btn {
+    transition: all var(--transition-normal);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    animation: bounce 0.3s ease-in-out;
+}
+
+/* Navigation link transitions */
+.nav__menu a {
+    transition: all var(--transition-fast);
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav__menu a:hover {
+    color: var(--color-primary);
+}
+
+/* Footer social link transitions */
+.footer__social a {
+    transition: all var(--transition-normal);
+}
+
+.footer__social a:hover {
+    transform: translateY(-3px);
+    color: var(--color-primary-dark);
+}
+
+/* Form input transitions */
+.form-group input,
+.form-group textarea {
+    transition: all var(--transition-normal);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    transform: scale(1.01);
+}
+
+/* Smooth transitions on all elements */
+* {
+    transition: background-color var(--transition-normal), 
+                color var(--transition-normal);
+}
+

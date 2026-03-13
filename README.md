@@ -127,22 +127,23 @@ Before submitting, verify:
 
 ## Your Information
 
-**Name:** [Your Name]
-**Student ID:** [Your Student ID]
-**Design Theme:** [Describe your portfolio theme/style]
+**Name:** Andrew Buumba Mweene
+**Student ID:** 2022043308
+**Design Theme:** A modern, professional blue color scheme (#007bff primary) with clean typography and light backgrounds, optimized for accessibility and readability across all devices.
 
 ### CSS Techniques Used
-- [ ] CSS Custom Properties
-- [ ] Flexbox
-- [ ] CSS Grid
-- [ ] Media Queries
-- [ ] Other: _______________
+- CSS Custom Properties — 8 colour variables, 6 typography sizes, 5 spacing values, 2 transition timings
+- Flexbox — Navigation layout, hero centering, footer, skills list, project card links
+- CSS Grid — Projects section with repeat(auto-fit, minmax(300px, 1fr)) responsive columns
+- Media Queries — 4 breakpoints (mobile, tablet 768px, desktop 1024px, large desktop 1200px)
+- Other: CSS animations (6 keyframes: fadeIn, slideUp, slideInLeft, slideInRight, bounce, pulse), dark/light mode toggle with data attributes, CSS-only hamburger menu (checkbox hack), print stylesheet
 
 ### Challenges & Solutions
-[Describe any challenges you faced and how you solved them]
+- Had challenges adding the hamburger feature and the Dark/light mode feature due to many errors
+
 
 ### Credits
-[List any images, fonts, or resources used with attribution]
+- None
 
 ---
 
