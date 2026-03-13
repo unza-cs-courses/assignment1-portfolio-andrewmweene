@@ -21,38 +21,38 @@ DO NOT use CSS frameworks (Bootstrap, Tailwind, etc.)
    ============================================================ */
 :root {
     /* Colors - TODO: Customize your color palette */
-    --color-primary: /* Your primary color */;
-    --color-primary-dark: /* Darker shade */;
-    --color-secondary: /* Secondary color */;
-    --color-text: /* Main text color */;
-    --color-text-light: /* Lighter text */;
-    --color-background: /* Page background */;
-    --color-background-alt: /* Alternate background */;
-    --color-border: /* Border color */;
+    --color-primary: #007bff;
+    --color-primary-dark: #0056b3;
+    --color-secondary: #6c757d;
+    --color-text: #212529;
+    --color-text-light: #6c757d;
+    --color-background: #f8f9fa;
+    --color-background-alt: #e9ecef;
+    --color-border: #dee2e6;
 
     /* Typography - TODO: Define your font sizes */
-    --font-family: /* Your font stack */;
-    --font-size-base: /* Base size, e.g., 16px */;
-    --font-size-sm: /* Small text */;
-    --font-size-lg: /* Large text */;
-    --font-size-xl: /* Extra large */;
-    --font-size-2xl: /* Headings */;
-    --font-size-3xl: /* Large headings */;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-base: 16px;
+    --font-size-sm: 14px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --font-size-2xl: 24px;
+    --font-size-3xl: 28px;
 
     /* Spacing - TODO: Define spacing scale */
-    --spacing-xs: /* Extra small */;
-    --spacing-sm: /* Small */;
-    --spacing-md: /* Medium */;
-    --spacing-lg: /* Large */;
-    --spacing-xl: /* Extra large */;
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
 
     /* Layout */
-    --max-width: /* Container max-width */;
-    --border-radius: /* Default border radius */;
+    --max-width: 1200px;
+    --border-radius: 4px;
 
     /* Transitions */
-    --transition-fast: /* Fast transition */;
-    --transition-normal: /* Normal transition */;
+    --transition-fast: 0.2s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
 }
 
 /* ============================================================
@@ -63,30 +63,46 @@ DO NOT use CSS frameworks (Bootstrap, Tailwind, etc.)
 *::before,
 *::after {
     /* TODO: box-sizing, margin, padding reset */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
     /* TODO: scroll-behavior, font-size */
+    scroll-behavior: smooth;
+    font-size: var(--font-size-base);
 }
 
 body {
     /* TODO: font-family, color, background-color, line-height */
+    font-family: var(--font-family);
+    color: var(--color-text);
+    background-color: var(--color-background);
+    line-height: 1.6;
 }
 
 img {
     /* TODO: Make images responsive */
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
 a {
     /* TODO: Link styles */
+    color: var(--color-primary);
+    text-decoration: none;
 }
 
 a:hover {
     /* TODO: Link hover state */
+    text-decoration: underline;
 }
 
 ul {
     /* TODO: List reset */
+    list-style: none;
 }
 
 /* ============================================================
@@ -100,6 +116,10 @@ ul {
      * - margin: 0 auto
      * - padding
      */
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
 
 /* ============================================================
@@ -114,26 +134,49 @@ ul {
      * - text-align, cursor
      * - transition
      */
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-normal);
 }
 
 .btn--primary {
     /* TODO: Primary button (filled) */
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
 }
 
 .btn--primary:hover {
     /* TODO: Primary button hover */
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
 }
 
 .btn--outline {
     /* TODO: Outline button (bordered) */
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
 }
 
 .btn--outline:hover {
     /* TODO: Outline button hover */
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
 }
 
 .btn--small {
     /* TODO: Small button variant */
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    border-radius: var(--border-radius);
 }
 
 /* ============================================================
@@ -147,6 +190,12 @@ ul {
 .header {
     /* TODO: Style the header
        Consider: position, background, padding, box-shadow, z-index */
+    position: sticky;
+    top: 0;
+    padding: var(--spacing-md);
+    background-color: var(--color-background);
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav {
@@ -155,24 +204,46 @@ ul {
      * - justify-content: space-between
      * - align-items: center
      */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.nav__logo {
+    display: flex;
+    align-items: center;
 }
 
 .nav__logo a {
     /* TODO: Logo styles */
+    font-size: var(--font-size-xl);
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color-primary);
 }
 
 .nav__menu {
     /* TODO: Style navigation menu
        Mobile: Stack vertically or hide
        Desktop: Horizontal with Flexbox */
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
 }
 
 .nav__menu a {
     /* TODO: Navigation link styles */
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    text-decoration: none;
 }
 
 .nav__menu a:hover {
     /* TODO: Navigation link hover */
+    text-decoration: underline;
 }
 
 /* ============================================================
@@ -183,14 +254,36 @@ ul {
     /* TODO: Style hero section
        Consider: min-height, background, centering content
        Use Flexbox for centering */
+    min-height: 100vh;
+    background-color: var(--color-background-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+}
+
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: var(--spacing-lg);
+    max-width: 800px;
 }
 
 .hero__content h1 {
     /* TODO: Style your name */
+    font-size: var(--font-size-2xl);
+    font-weight: bold;
+    color: var(--color-text);
+    line-height: 1.2;
 }
 
 .hero__tagline {
     /* TODO: Style tagline */
+    font-size: var(--font-size-lg);
+    color: var(--color-secondary);
 }
 
 /* ============================================================
@@ -199,37 +292,62 @@ ul {
    ============================================================ */
 .about {
     /* TODO: Section padding */
+    padding: var(--spacing-xl) 0;
 }
 
 .about h2 {
     /* TODO: Section heading */
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 .about__content {
     /* TODO: Use CSS Grid or Flexbox for layout
        Mobile: Stack image above text
        Desktop: Side by side */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
 }
 
 .about__image img {
     /* TODO: Style profile image */
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .about__text p {
     /* TODO: Paragraph styles */
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    line-height: 1.6;
 }
 
 .about__text h3 {
     /* TODO: Subheading styles */
+    font-size: var(--font-size-lg);
+    color: var(--color-primary);
+    margin-top: var(--spacing-lg);
 }
 
 .skills-list {
     /* TODO: Style skills list
        Consider: Flexbox, tags/badges style */
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
 }
 
 .skills-list li {
     /* TODO: Individual skill badge */
+    background-color: var(--color-primary);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 25px;
+    font-size: var(--font-size-sm);
+    transition: background-color 0.3s ease;
 }
 
 /* ============================================================
@@ -238,10 +356,13 @@ ul {
    ============================================================ */
 .projects {
     /* TODO: Section styling */
+    padding: var(--spacing-xl) 0;
 }
 
 .projects h2 {
     /* TODO: Section heading */
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 .projects__grid {
@@ -249,6 +370,9 @@ ul {
        Mobile: 1 column
        Tablet: 2 columns
        Desktop: 3 columns */
+    display: grid;
+    gap: var(--spacing-lg);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .project-card {
@@ -256,30 +380,48 @@ ul {
      * - background, border-radius, overflow
      * - box-shadow, transition
      */
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: var(--transition-normal);
 }
 
 .project-card:hover {
     /* TODO: Card hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
 }
 
 .project-card img {
     /* TODO: Project image */
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: var(--border-radius);
 }
 
 .project-card__content {
     /* TODO: Card content area */
+    padding: var(--spacing-md);
 }
 
 .project-card__content h3 {
     /* TODO: Project title */
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
 }
 
 .project-card__content p {
     /* TODO: Project description */
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    line-height: 1.6;
 }
 
 .project-card__links {
     /* TODO: Links container (Flexbox) */
+    display: flex;
+    gap: var(--spacing-sm);
 }
 
 /* ============================================================
@@ -288,23 +430,32 @@ ul {
    ============================================================ */
 .contact {
     /* TODO: Section styling */
+    padding: var(--spacing-xl) 0;
 }
 
 .contact h2 {
     /* TODO: Section heading */
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 .contact__form {
     /* TODO: Style contact form
        Consider: max-width, centering */
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .form-group {
     /* TODO: Form group spacing */
+    margin-bottom: var(--spacing-md);
 }
 
 .form-group label {
     /* TODO: Label styles */
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: bold;
 }
 
 .form-group input,
@@ -315,15 +466,26 @@ ul {
      * - font-family, font-size
      * - transition
      */
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    transition: var(--transition-normal);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     /* TODO: Focus state */
+    border-color: var(--color-primary);
+    outline: none;
 }
 
 .form-group textarea {
     /* TODO: Textarea specific styles */
+    min-height: 150px;
+    resize: vertical;
 }
 
 /* ============================================================
@@ -335,18 +497,31 @@ ul {
      * - background, color, padding
      * - text-align
      */
+    background-color: var(--color-background-alt);
+    color: var(--color-text);
+    padding: var(--spacing-md) 0;
+    text-align: center;
 }
 
 .footer .container {
     /* TODO: Footer layout (Flexbox) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
 }
 
 .footer__social {
     /* TODO: Social links container */
+    display: flex;
+    gap: var(--spacing-sm);
 }
 
 .footer__social a {
     /* TODO: Social link styles */
+    color: var(--color-primary);
+    font-size: var(--font-size-lg);
+    text-decoration: underline;
 }
 
 .footer__social a:hover {
@@ -367,6 +542,53 @@ ul {
        - Adjust typography sizes
        - Change layouts (Grid columns, Flexbox directions)
        - Adjust spacing */
+    .hero__content h1 {
+        font-size: var(--font-size-3xl);
+    }
+
+    .about h2,
+    .projects h2,
+    .contact h2 {
+        font-size: 32px;
+    }
+
+    /* About section: change from column to row layout */
+    .about__content {
+        flex-direction: row;
+        align-items: center;
+        gap: var(--spacing-xl);
+    }
+
+    .about__image img {
+        max-width: 280px;
+        flex-shrink: 0;
+    }
+
+    .about__text {
+        flex: 1;
+    }
+
+    /* Projects grid: 2 columns on tablet */
+    .projects__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Navigation adjustments */
+    .nav__menu {
+        gap: var(--spacing-xl);
+    }
+
+    /* Increase section padding */
+    .about,
+    .projects,
+    .contact {
+        padding: var(--spacing-xl) 0;
+    }
+
+    /* Form adjustments */
+    .contact__form {
+        max-width: 700px;
+    }
 }
 
 /* Desktop (1024px and up) */
@@ -375,11 +597,141 @@ ul {
        - Further layout adjustments
        - Larger typography
        - More spacing */
+
+    /* Further typography adjustments */
+    .hero__content h1 {
+        font-size: 48px;
+    }
+
+    .hero__tagline {
+        font-size: var(--font-size-xl);
+    }
+
+    .about h2,
+    .projects h2,
+    .contact h2 {
+        font-size: 36px;
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .project-card__content h3 {
+        font-size: var(--font-size-xl);
+    }
+
+    /* Projects grid: 3 columns on desktop */
+    .projects__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-xl);
+    }
+
+    /* Increase container padding for larger viewports */
+    .container {
+        padding: 0 var(--spacing-lg);
+    }
+
+    /* About section: larger image */
+    .about__image img {
+        max-width: 350px;
+    }
+
+    /* Increase section padding on desktop */
+    .about,
+    .projects,
+    .contact {
+        padding: 4rem 0;
+    }
+
+    /* Navigation logo size */
+    .nav__logo a {
+        font-size: var(--font-size-2xl);
+    }
+
+    /* Form width on desktop */
+    .contact__form {
+        max-width: 800px;
+    }
+
+    /* Project card adjustments */
+    .project-card img {
+        height: 250px;
+    }
+
+    .project-card__content {
+        padding: var(--spacing-lg);
+    }
+
+    /* Larger skill badges */
+    .skills-list li {
+        font-size: var(--font-size-base);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
 }
 
 /* Large Desktop (1200px and up) */
 @media (min-width: 1200px) {
     /* TODO: Add large desktop styles (optional) */
+
+    /* Maximum content width for very large screens */
+    .container {
+        padding: 0 var(--spacing-xl);
+    }
+
+    /* Hero section: larger typography */
+    .hero__content h1 {
+        font-size: 56px;
+        line-height: 1.2;
+    }
+
+    .hero__tagline {
+        font-size: var(--font-size-2xl);
+    }
+
+    /* Section headings: even larger */
+    .about h2,
+    .projects h2,
+    .contact h2 {
+        font-size: 40px;
+        margin-bottom: 2.5rem;
+    }
+
+    /* About section: maximum image size */
+    .about__image img {
+        max-width: 400px;
+    }
+
+    /* Larger section padding */
+    .about,
+    .projects,
+    .contact {
+        padding: 5rem 0;
+    }
+
+    /* Project cards: larger spacing and height */
+    .projects__grid {
+        gap: 2rem;
+    }
+
+    .project-card img {
+        height: 280px;
+    }
+
+    .project-card__content {
+        padding: 1.5rem;
+    }
+
+    /* Form: wider on large screens */
+    .contact__form {
+        max-width: 900px;
+    }
+
+    /* Enhanced footer spacing */
+    .footer {
+        padding: var(--spacing-xl) 0;
+    }
+
+    .footer .container {
+        gap: var(--spacing-md);
+    }
 }
 
 /* ============================================================
